@@ -1,6 +1,7 @@
 const Joi = require('joi');
 
 const addSchema = Joi.object({
+  imgUrl: Joi.string().default(''),
   title: Joi.string().required(),
   descr: Joi.string().required(),
   rating: Joi.number().default(0),
@@ -13,7 +14,6 @@ const addSchema = Joi.object({
     phone: Joi.string().required(),
     email: Joi.string().required(),
   },
-  imgUrl: Joi.string().default(''),
 });
 
 module.exports = addSchema;

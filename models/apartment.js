@@ -37,10 +37,10 @@ const apartmentSchema = Schema({
       type: String, 
       required: [true, 'Set owners email'],
     },
-    imgUrl: {
-      type: String,
-      default: ""
-    }
+  },
+  imgUrl: {
+    type: String,
+    default: ""
   }
 }, { versionKey: false, timestamps: true });
 
