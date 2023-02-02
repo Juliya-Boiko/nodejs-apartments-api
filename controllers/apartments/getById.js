@@ -1,9 +1,9 @@
-const apartmentsOperations = require('../../models/apartments');
 const RequestError = require('../../helpers');
+const Apartment = require('../../models/apartment');
 
 const getById = async (req, res) => {
   const { apartmentId } = req.params;
-  const result = await apartmentsOperations.getApartmentById(apartmentId);
+  const result = await Apartment.findById(apartmentId);
   if (!result) {
     throw RequestError(404, `No apartment with id ${apartmentId}`);
   }

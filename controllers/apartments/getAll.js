@@ -1,7 +1,7 @@
-const apartmentsOperations = require('../../models/apartments')
+const Apartment = require('../../models/apartment');
 
 const getAll = async (req, res) => {
-  const result = await apartmentsOperations.apartmentsList();
+  const result = await Apartment.find({});
   res.json(result);
 };
 

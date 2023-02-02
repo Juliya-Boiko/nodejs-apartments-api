@@ -1,9 +1,9 @@
-const apartmentsOperations = require('../../models/apartments');
 const RequestError = require('../../helpers');
+const Apartment = require('../../models/apartment');
 
 const deleteById = async (req, res) => {
   const { apartmentId } = req.params;
-  const result = apartmentsOperations.removeApartment(apartmentId);
+  const result = Apartment.findByIdAndDelete(apartmentId);
   if (!result) {
     throw RequestError(404, `No apartmentId with id ${apartmentId}`);
   }

@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { handleErrors } = require('../helpers');
 
 const apartmentSchema = Schema({
   title: {
@@ -41,7 +42,9 @@ const apartmentSchema = Schema({
       default: ""
     }
   }
-});
+}, { versionKey: false, timestamps: true });
+
+apartmentSchema.post("save", handleErrors);
 
 const Apartment = model('apartment', apartmentSchema);
 

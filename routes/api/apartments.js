@@ -10,7 +10,6 @@ router.get('/', controllerWrapper(apartmentsControllers.getAll));
 router.get('/:apartmentId', controllerWrapper(apartmentsControllers.getByID));
 
 router.post('/', validateBody(addSchema), controllerWrapper(apartmentsControllers.addNew));
-// router.post('/', controllerWrapper(apartmentsControllers.addNew));
 
 router.delete('/:apartmentId', controllerWrapper(apartmentsControllers.deleteById));
 
