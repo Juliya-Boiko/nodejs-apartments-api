@@ -1,13 +1,7 @@
-const apartmentsOperations = require('../../models/apartments');
-const addSchema = require('../../shemas/apartments/addShema');
-const RequestError = require('../../helpers');
+const Apartment = require('../../models/apartment');
 
 const addNew = async (req, res) => {
-  const { error } = addSchema.validate(req.body);
-  if (error) {
-    throw RequestError(400, error.message);
-  }
-  const result = await apartmentsOperations.addApartment(req.body);
+  const result = await Apartment.create(req.body);
   res.status(201).json(result);
 }
 
