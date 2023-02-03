@@ -6,6 +6,9 @@ const { controllerWrapper } = require('../../helpers');
 const { validateBody, authenticate } = require('../../middlewares');
 
 apartmentsRouter.get('/', authenticate, controllerWrapper(apartmentsControllers.getAll));
+// IF FILTERS TRUE --> `?city=${}&price=${}`
+
+apartmentsRouter.get('/cities', authenticate, controllerWrapper(apartmentsControllers.getCitiesList));
 
 apartmentsRouter.get('/:apartmentId', authenticate, controllerWrapper(apartmentsControllers.getByID));
 
@@ -14,6 +17,8 @@ apartmentsRouter.post('/', authenticate, validateBody(schemas.addSchema), contro
 apartmentsRouter.put('/:apartmentId', authenticate, validateBody(schemas.addSchema), controllerWrapper(apartmentsControllers.updateById));
 
 apartmentsRouter.patch('/:apartmentId/imgUrl', authenticate, validateBody(schemas.updateImgUrlSchema), controllerWrapper(apartmentsControllers.updateImgUrlById));
+
+apartmentsRouter.put('/:apartmentId/reviews', authenticate, validateBody(schemas.reviewSchema), controllerWrapper(apartmentsControllers.addReview));
 
 apartmentsRouter.delete('/:apartmentId', authenticate, controllerWrapper(apartmentsControllers.deleteById));
 

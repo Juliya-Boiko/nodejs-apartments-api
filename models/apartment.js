@@ -41,6 +41,10 @@ const apartmentSchema = Schema({
   imgUrl: {
     type: String,
     default: ""
+  },
+  reviews: {
+    type: Array,
+    default: []
   }
 }, { versionKey: false, timestamps: true });
 
