@@ -3,18 +3,18 @@ const apartmentsRouter = express.Router();
 const schemas = require('../../shemas/apartments');
 const apartmentsControllers = require('../../controllers/apartments');
 const { controllerWrapper } = require('../../helpers');
-const { validateBody } = require('../../middlewares');
+const { validateBody, authenticate } = require('../../middlewares');
 
-apartmentsRouter.get('/', controllerWrapper(apartmentsControllers.getAll));
+apartmentsRouter.get('/', authenticate, controllerWrapper(apartmentsControllers.getAll));
 
-apartmentsRouter.get('/:apartmentId', controllerWrapper(apartmentsControllers.getByID));
+apartmentsRouter.get('/:apartmentId', authenticate, controllerWrapper(apartmentsControllers.getByID));
 
-apartmentsRouter.post('/', validateBody(schemas.addSchema), controllerWrapper(apartmentsControllers.addNew));
+apartmentsRouter.post('/', authenticate, validateBody(schemas.addSchema), controllerWrapper(apartmentsControllers.addNew));
 
-apartmentsRouter.put('/:apartmentId', validateBody(schemas.addSchema), controllerWrapper(apartmentsControllers.updateById));
+apartmentsRouter.put('/:apartmentId', authenticate, validateBody(schemas.addSchema), controllerWrapper(apartmentsControllers.updateById));
 
-apartmentsRouter.patch('/:apartmentId/imgUrl', validateBody(schemas.updateImgUrlSchema), controllerWrapper(apartmentsControllers.updateImgUrlById));
+apartmentsRouter.patch('/:apartmentId/imgUrl', authenticate, validateBody(schemas.updateImgUrlSchema), controllerWrapper(apartmentsControllers.updateImgUrlById));
 
-apartmentsRouter.delete('/:apartmentId', controllerWrapper(apartmentsControllers.deleteById));
+apartmentsRouter.delete('/:apartmentId', authenticate, controllerWrapper(apartmentsControllers.deleteById));
 
 module.exports = apartmentsRouter;
