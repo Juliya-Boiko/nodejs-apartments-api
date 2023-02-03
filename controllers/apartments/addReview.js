@@ -1,4 +1,3 @@
-const RequestError = require('../../helpers');
 const Apartment = require('../../models/apartment');
 
 const addReview = async (req, res) => {
@@ -6,7 +5,7 @@ const addReview = async (req, res) => {
   const newReview = req.body;
   const result = await Apartment.findById(apartmentId);
   if (!result) {
-    throw RequestError(404, `No apartmentId with id ${apartmentId}`);
+    throw new Error(`Apartment with id ${apartmentId} not found`);
   }
   await Apartment.findByIdAndUpdate(apartmentId, {$push: {reviews: newReview}}, {upsert: true})
   res.status(201).json({

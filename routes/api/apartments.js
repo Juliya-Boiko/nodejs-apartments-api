@@ -6,7 +6,7 @@ const { controllerWrapper } = require('../../helpers');
 const { validateBody, authenticate } = require('../../middlewares');
 
 apartmentsRouter.get('/', authenticate, controllerWrapper(apartmentsControllers.getAll));
-// IF FILTERS TRUE --> `?city=${}&price=${}`
+// IF FILTERS TRUE --> `?city=${}&price=${}` & getFiltered--controller
 
 apartmentsRouter.get('/cities', authenticate, controllerWrapper(apartmentsControllers.getCitiesList));
 
