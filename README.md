@@ -13,16 +13,16 @@ Apartments API.
 
 ## 📍 AUTH endpoint: /api/auth
 
-📎 POST /register - register user
-📎 POST /login - login user
+- 📎 POST /register - register user
+- 📎 POST /login - login user
 
-## 📍 APARTMENTS endpoint: /apartments
+## 📍 APARTMENTS endpoint: /api/apartments
 
-📎 GET / - get all apartments
-📎 GET /cities - get all apartments locations
-📎 GET /:apartmentId - get apartment information
-📎 POST / - add new apartment
-📎 PUT /:apartmentId - update apartment info
-📎 PATCH /:apartmentId/imgUrl - update apartment image
-📎 PUT /:apartmentId/reviews - add apartment review
-📎 DELETE /:apartmentId - delete apartment
+- 📎 GET / - get all apartments
+- 📎 GET /cities - get all apartments locations
+- 📎 GET /:apartmentId - get apartment information
+- 📎 POST / - add new apartment
+- 📎 PUT /:apartmentId - update apartment info
+- 📎 PATCH /:apartmentId/imgUrl - update apartment image
+- 📎 PUT /:apartmentId/reviews - add apartment review
+- 📎 DELETE /:apartmentId - delete apartment
