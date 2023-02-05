@@ -3,10 +3,10 @@ const authRouter = express.Router();
 const authSchemas = require('../../shemas/auth');
 const { validateBody } = require('../../middlewares');
 const { controllerWrapper } = require('../../helpers');
-const authControllers = require('../../controllers/auth');
+const { register, login } = require('../../controllers/auth');
 
-authRouter.post('/register', validateBody(authSchemas.registerSchema), controllerWrapper(authControllers.register));
+authRouter.post('/register', validateBody(authSchemas.registerSchema), controllerWrapper(register));
 
-authRouter.post('/login', validateBody(authSchemas.loginSchema), controllerWrapper(authControllers.login));
+authRouter.post('/login', validateBody(authSchemas.loginSchema), controllerWrapper(login));
 
 module.exports = authRouter;

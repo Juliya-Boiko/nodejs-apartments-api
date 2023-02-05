@@ -1,18 +1,15 @@
 const { Schema, model } = require('mongoose');
 const { handleErrors } = require('../helpers');
 
-// const passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-
 const userSchema = Schema({
   email: {
     type: String, 
-    // match: emailRegexp,
     required: [true, 'Email is required'],
     unique: true,
   },
   password: {
     type: String, 
-   // match: passwordRegexp,
+    minLength: 6,
     required: [true, 'Password is required'],
   }
 }, { versionKey: false, timestamps: true });

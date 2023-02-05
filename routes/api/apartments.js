@@ -1,25 +1,24 @@
 const express = require('express');
 const apartmentsRouter = express.Router();
-const schemas = require('../../shemas/apartments');
-const apartmentsControllers = require('../../controllers/apartments');
+const { addSchema, reviewSchema } = require('../../shemas/apartments');
 const { controllerWrapper } = require('../../helpers');
 const { validateBody, authenticate, upload } = require('../../middlewares');
+const { getAll, getCitiesList, getByID, addNew, updateById, updateImgUrlById, addReview, deleteById } = require('../../controllers/apartments');
 
-apartmentsRouter.get('/', authenticate, controllerWrapper(apartmentsControllers.getAll));
-// IF FILTERS TRUE --> `?city=${}&price=${}` & getFiltered--controller
+apartmentsRouter.get('/', authenticate, controllerWrapper(getAll));
 
-apartmentsRouter.get('/cities', authenticate, controllerWrapper(apartmentsControllers.getCitiesList));
+apartmentsRouter.get('/cities', authenticate, controllerWrapper(getCitiesList));
 
-apartmentsRouter.get('/:apartmentId', authenticate, controllerWrapper(apartmentsControllers.getByID));
+apartmentsRouter.get('/:apartmentId', authenticate, controllerWrapper(getByID));
 
-apartmentsRouter.post('/', authenticate, validateBody(schemas.addSchema), controllerWrapper(apartmentsControllers.addNew));
+apartmentsRouter.post('/', authenticate, validateBody(addSchema), controllerWrapper(addNew));
 
-apartmentsRouter.put('/:apartmentId', authenticate, validateBody(schemas.addSchema), controllerWrapper(apartmentsControllers.updateById));
+apartmentsRouter.put('/:apartmentId', authenticate, validateBody(addSchema), controllerWrapper(updateById));
 
-apartmentsRouter.patch('/:apartmentId/imgUrl', authenticate, upload.single('cover'), controllerWrapper(apartmentsControllers.updateImgUrlById));
+apartmentsRouter.patch('/:apartmentId/imgUrl', authenticate, upload.single('cover'), controllerWrapper(updateImgUrlById));
 
-apartmentsRouter.put('/:apartmentId/reviews', authenticate, validateBody(schemas.reviewSchema), controllerWrapper(apartmentsControllers.addReview));
+apartmentsRouter.put('/:apartmentId/reviews', authenticate, validateBody(reviewSchema), controllerWrapper(addReview));
 
-apartmentsRouter.delete('/:apartmentId', authenticate, controllerWrapper(apartmentsControllers.deleteById));
+apartmentsRouter.delete('/:apartmentId', authenticate, controllerWrapper(deleteById));
 
 module.exports = apartmentsRouter;
