@@ -2,6 +2,8 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
 require('dotenv').config();
+// const swaggerUi = require("swagger-ui-express");
+// const swaggerSpec = require('./swagger');
 
 const authRouter = require('./routes/api/auth');
 const apartmentsRouter = require('./routes/api/apartments');
@@ -15,6 +17,7 @@ app.use(express.static("public"));
 
 app.use('/api/auth', authRouter);
 app.use('/api/apartments', apartmentsRouter);
+// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });
