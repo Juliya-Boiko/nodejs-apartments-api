@@ -17,5 +17,5 @@ module.exports = {
   updateById,
   updateImgUrlById,
   getCitiesList,
-  addReview
+  addReview,
 };

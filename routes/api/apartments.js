@@ -3,7 +3,7 @@ const apartmentsRouter = express.Router();
 const schemas = require('../../shemas/apartments');
 const apartmentsControllers = require('../../controllers/apartments');
 const { controllerWrapper } = require('../../helpers');
-const { validateBody, authenticate } = require('../../middlewares');
+const { validateBody, authenticate, upload } = require('../../middlewares');
 
 apartmentsRouter.get('/', authenticate, controllerWrapper(apartmentsControllers.getAll));
 // IF FILTERS TRUE --> `?city=${}&price=${}` & getFiltered--controller
@@ -16,7 +16,7 @@ apartmentsRouter.post('/', authenticate, validateBody(schemas.addSchema), contro
 
 apartmentsRouter.put('/:apartmentId', authenticate, validateBody(schemas.addSchema), controllerWrapper(apartmentsControllers.updateById));
 
-apartmentsRouter.patch('/:apartmentId/imgUrl', authenticate, validateBody(schemas.updateImgUrlSchema), controllerWrapper(apartmentsControllers.updateImgUrlById));
+apartmentsRouter.patch('/:apartmentId/imgUrl', authenticate, upload.single('cover'), controllerWrapper(apartmentsControllers.updateImgUrlById));
 
 apartmentsRouter.put('/:apartmentId/reviews', authenticate, validateBody(schemas.reviewSchema), controllerWrapper(apartmentsControllers.addReview));
 
