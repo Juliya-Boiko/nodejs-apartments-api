@@ -38,10 +38,6 @@ const apartmentSchema = Schema({
       required: [true, 'Set owners email'],
     },
   },
-  imgUrl: {
-    type: String,
-    default: ""
-  },
   reviews: {
     type: Array,
     default: []

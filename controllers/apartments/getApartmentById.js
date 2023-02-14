@@ -1,7 +1,7 @@
 const Apartment = require('../../models/apartment');
 const createError = require('http-errors');
 
-const getById = async (req, res) => {
+const getApartmentById = async (req, res) => {
   const { apartmentId } = req.params;
   const result = await Apartment.findById(apartmentId);
   if (!result) {
@@ -10,4 +10,4 @@ const getById = async (req, res) => {
   res.json(result);
 }
 
-module.exports = getById;
+module.exports = getApartmentById;

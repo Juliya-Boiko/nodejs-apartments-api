@@ -2,6 +2,12 @@ const { Schema, model } = require('mongoose');
 const { handleErrors } = require('../helpers');
 
 const userSchema = Schema({
+  name: {
+    type: String, 
+    required: [true, 'Name is required'],
+    minLength: 2,
+    trim: true
+  },
   email: {
     type: String, 
     required: [true, 'Email is required'],
@@ -9,9 +15,12 @@ const userSchema = Schema({
   },
   password: {
     type: String, 
-    minLength: 6,
     required: [true, 'Password is required'],
-  }
+  },
+  token: {
+    type: String,
+    default: null,
+  },
 }, { versionKey: false, timestamps: true });
 
 userSchema.post("save", handleErrors);

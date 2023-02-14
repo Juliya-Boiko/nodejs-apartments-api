@@ -1,7 +1,6 @@
 const Joi = require('joi');
 
 const addSchema = Joi.object({
-  imgUrl: Joi.string().default(''),
   title: Joi.string().required(),
   descr: Joi.string().required(),
   rating: Joi.number().default(0),
