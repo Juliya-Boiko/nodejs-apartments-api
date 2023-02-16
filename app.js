@@ -4,6 +4,7 @@ const cors = require('cors');
 const authRouter = require('./routes/api/auth');
 const apartmentsRouter = require('./routes/api/apartments');
 const citiesRouter = require('./routes/api/cities');
+const ordersRouter = require('./routes/api/orders');
 require('dotenv').config();
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.static("public"));
 app.use('/auth', authRouter);
 app.use('/apartments', apartmentsRouter);
 app.use('/cities', citiesRouter);
+app.use('/orders', ordersRouter);
 // ================ ROUTES ================
 
 app.use((req, res) => {

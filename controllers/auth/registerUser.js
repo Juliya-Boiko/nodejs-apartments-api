@@ -25,8 +25,9 @@ const registerUser = async (req, res) => {
   // ============================
 
   res.status(201).json({
-   name: updatedUser.name,
-   token: updatedUser.token,
+    userId: updatedUser._id,
+    name: updatedUser.name,
+    token: updatedUser.token,
   });
 };
 

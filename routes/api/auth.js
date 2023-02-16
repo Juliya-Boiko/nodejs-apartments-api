@@ -10,6 +10,5 @@ authRouter.post('/register', validateBody(registerSchema), controllerWrapper(reg
 authRouter.post('/login', validateBody(loginSchema), controllerWrapper(loginUser));
 
 authRouter.post('/logout', authenticate, controllerWrapper(logoutUser));
-// router.post('/logout', auth, controllerWrapper(usersControllers.logoutUser));
 
 module.exports = authRouter;
