@@ -1,4 +1,4 @@
-<!-- # 🗄 https://nodejs-apartments-api.onrender.com -->
+# 🗄 https://apartments-api.onrender.com
 
 Apartments API - backend pet-progect for another pet-progect(site GoHome) - searching and booking apartments. Using:
 BCRYPT - for hashing passwords;
