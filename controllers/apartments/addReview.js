@@ -10,7 +10,7 @@ const addReview = async (req, res) => {
   }
   await Apartment.findByIdAndUpdate(apartmentId, {$push: {reviews: newReview}}, {upsert: true})
   res.status(201).json({
-    message: `Apertment ${apartmentId} reviews updated`
+    message: `Apartment ${apartmentId} reviews updated`
   });
 };
 
